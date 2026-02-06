@@ -1,6 +1,5 @@
 ## Hello, I'm Pedro Souza, Full Stack developer with Typescript.
 
-- 🌱 I’m currently learning computer science.
 - 📫 How to reach me: pedroaugustosilva.880@gmail.com
 
 <div style="display: inline_block"><br>
@@ -18,18 +17,3 @@
   <a href="https://www.linkedin.com/in/pedroaugsouza/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a> 
   
 </div>
-
-<!--
-**PedroAugSouza/PedroAugSouza** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
