@@ -1,19 +1,34 @@
-## Hello, I'm Pedro Souza, Full Stack developer with Typescript.
-
-- 📫 How to reach me: pedroaugustosilva.880@gmail.com
-
-<div style="display: inline_block"><br>
-  <img align="center" alt="Rafa-Ts" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-plain.svg">
-  <img align="center" alt="Rafa-React" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg">
-  <img align="center" alt="Rafa-HTML" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
-  <img align="center" alt="Rafa-CSS" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
-  <img align="center" alt="Rafa-Python" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg">
+<div align="center">
+  <img src="./peu-ascii.svg" alt="PEU — ASCII terminal portrait" width="420"/>
 </div>
-  
-  ##
- 
-<div> 
-  <a href = "mailto:pedroaugustosilva.880@gmail.com"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
-  <a href="https://www.linkedin.com/in/pedroaugsouza/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a> 
-  
-</div>
+
+# Hi 👋 My name is Pedro Souza
+
+## Software Engineer & Co-founder @ Toca
+
+Co-founder and engineer at [Toca](https://toca.com.vc), an AI chat SaaS for small and medium e-commerce businesses. I focus on software architecture, LLMs, and AI systems — building the pipelines that let chat products actually reason and act.
+
+- 🌍 Based in São Paulo, Brazil
+- 🚀 Currently building [Toca](https://toca.com.vc)
+- 🧠 Into software architecture, LLMs, and AI systems
+- 🤝 Open to talking shop about AI product architecture
+
+### Social Media
+
+<p>
+  <a href="https://github.com/PedroAugSouza"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/github.svg" width="32" height="32" alt="GitHub"/></a>
+  <!-- swap in your LinkedIn/X handles here, e.g.: -->
+  <!-- <a href="https://www.linkedin.com/in/SEU-USUARIO"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/linkedin.svg" width="32" height="32" alt="LinkedIn"/></a> -->
+</p>
+
+### Badges
+
+**GitHub Stats**
+
+<p>
+  <img src="https://github-readme-stats.vercel.app/api?username=PedroAugSouza&show_icons=true&hide=&count_private=true&title_color=0891b2&text_color=ffffff&icon_color=0891b2&bg_color=1c1917&hide_border=true&show_icons=true" alt="PedroAugSouza's GitHub stats"/>
+</p>
+
+<p>
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=PedroAugSouza&stroke=ffffff&background=1c1917&ring=0891b2&fire=0891b2&sideNums=ffffff&sideLabels=ffffff&dates=ffffff&hide_border=true" alt="PedroAugSouza's GitHub streak"/>
+</p>
