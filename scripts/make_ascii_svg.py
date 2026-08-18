@@ -40,13 +40,22 @@ SHARPEN = False
 WHITE_FLOOR = 0.80  # luminance above this is forced to blank (space)
 
 PAD = 20
-TITLEBAR_H = 30
-STATUS_H = 30
+# the portrait renders on an 840px canvas but ships in the README at ~370px
+# (a ~0.44 downscale), so the window chrome is scaled up ~2.27x here to land at
+# the same on-screen size as the wordmark panel's chrome -- the two terminal
+# windows then read as one matched pair. no bottom status bar, to match it too.
+TITLEBAR_H = 64
+DOT_R = 10.2
+DOT_GAP = 34
+DOT_INSET = 41
+TITLE_FS = 26
+RX = 27
+STROKE = 2.3
 
 ART_W = COLS * CELL_W
 ART_H = ROWS * CELL_H
 CANVAS_W = ART_W + PAD * 2
-CANVAS_H = TITLEBAR_H + ART_H + STATUS_H + PAD
+CANVAS_H = TITLEBAR_H + ART_H + PAD
 
 BG = "#0d1117"
 BG2 = "#111722"
@@ -96,13 +105,13 @@ parts.append('<defs>'
               f'<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">'
               f'<stop offset="0" stop-color="{BG2}"/><stop offset="1" stop-color="{BG}"/>'
               f'</linearGradient></defs>')
-parts.append(f'<rect width="{CANVAS_W}" height="{CANVAS_H}" rx="12" fill="url(#bg)"/>')
-parts.append(f'<rect x="0.5" y="0.5" width="{CANVAS_W-1}" height="{CANVAS_H-1}" rx="12" '
-             f'fill="none" stroke="{FRAME}" stroke-width="1"/>')
-parts.append(f'<line x1="0" y1="{TITLEBAR_H}" x2="{CANVAS_W}" y2="{TITLEBAR_H}" stroke="{FRAME}"/>')
+parts.append(f'<rect width="{CANVAS_W}" height="{CANVAS_H}" rx="{RX}" fill="url(#bg)"/>')
+parts.append(f'<rect x="{STROKE/2}" y="{STROKE/2}" width="{CANVAS_W-STROKE}" height="{CANVAS_H-STROKE}" '
+             f'rx="{RX}" fill="none" stroke="{FRAME}" stroke-width="{STROKE}"/>')
+parts.append(f'<line x1="0" y1="{TITLEBAR_H}" x2="{CANVAS_W}" y2="{TITLEBAR_H}" stroke="{FRAME}" stroke-width="{STROKE}"/>')
 for i, dotcol in enumerate(["#ff5f56", "#ffbd2e", "#27c93f"]):
-    parts.append(f'<circle cx="{PAD + i*16}" cy="{TITLEBAR_H/2}" r="5" fill="{dotcol}"/>')
-parts.append(f'<text x="{CANVAS_W/2}" y="{TITLEBAR_H/2 + 4}" fill="{TITLE_TEXT}" font-size="12" '
+    parts.append(f'<circle cx="{DOT_INSET + i*DOT_GAP:.0f}" cy="{TITLEBAR_H/2:.0f}" r="{DOT_R}" fill="{dotcol}"/>')
+parts.append(f'<text x="{CANVAS_W/2:.0f}" y="{TITLEBAR_H/2 + TITLE_FS*0.34:.0f}" fill="{TITLE_TEXT}" font-size="{TITLE_FS}" '
              f'text-anchor="middle">{PROMPT_USER}@github: ~$ ./portrait.sh</text>')
 
 font_size = CELL_H * 0.86
@@ -130,14 +139,6 @@ for ry, line in enumerate(rows_txt):
         f'<set attributeName="opacity" to="0" begin="{delay+ROW_DUR:.3f}s"/></rect>'
     )
 
-status_line_y = TITLEBAR_H + ART_H + PAD * 0.35
-status_y = status_line_y + 19
-parts.append(f'<line x1="0" y1="{status_line_y:.1f}" x2="{CANVAS_W}" y2="{status_line_y:.1f}" stroke="{FRAME}"/>')
-parts.append(f'<text x="{PAD}" y="{status_y:.1f}" fill="{TITLE_TEXT}" font-size="13">'
-             f'{PROMPT_USER}@github:~$ whoami <tspan fill="{INK}">{html.escape(WHOAMI)}</tspan></text>')
-parts.append(f'<rect x="{PAD+196}" y="{status_y-12:.1f}" width="8" height="14" fill="{INK}">'
-             f'<animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.5;0.51;1" '
-             f'dur="1s" repeatCount="indefinite"/></rect>')
 parts.append("</svg>")
 
 svg = "".join(parts)
