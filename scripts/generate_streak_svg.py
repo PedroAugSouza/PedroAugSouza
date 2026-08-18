@@ -8,14 +8,64 @@ import sys, json, os, datetime, urllib.request
 USER = sys.argv[1] if len(sys.argv) > 1 else "PedroAugSouza"
 OUT  = sys.argv[2] if len(sys.argv) > 2 else "streak.svg"
 
+HERE = os.path.dirname(os.path.abspath(__file__))
+
+
+def _levels_from_counts(days):
+    """Add a GitHub-style 0..4 level to each {date,count} day, using quartiles
+    of the non-zero counts so the palette spreads naturally."""
+    nz = sorted(c for c in (d["count"] for d in days) if c > 0)
+    if not nz:
+        cuts = [1, 1, 1, 1]
+    else:
+        def q(f):
+            return nz[min(len(nz) - 1, int(f * len(nz)))]
+        cuts = [1, q(0.25), q(0.5), q(0.75)]
+    out = []
+    for d in days:
+        c = d["count"]
+        if c <= 0:
+            lvl = 0
+        elif c < cuts[1]:
+            lvl = 1
+        elif c < cuts[2]:
+            lvl = 2
+        elif c < cuts[3]:
+            lvl = 3
+        else:
+            lvl = 4
+        out.append({"date": d["date"], "count": c, "level": lvl})
+    return out
+
+
+def _from_scraped(path):
+    """Convert data/contributions.json (fetch_contributions.py output) into the
+    jogruber-shaped {contributions:[{date,count,level}], total:{lastYear}}."""
+    raw = json.load(open(path))
+    days = _levels_from_counts(raw["days"])
+    return {"contributions": days,
+            "total": {"lastYear": raw.get("total_contributions",
+                                          sum(d["count"] for d in days))}}
+
+
 def get_data(user):
     url = f"https://github-contributions-api.jogruber.de/v4/{user}?y=last"
     try:
         with urllib.request.urlopen(url, timeout=25) as r:
             return json.loads(r.read().decode())
     except Exception as e:
-        # fallback to a local snapshot if the API is unreachable
-        here = os.path.join(os.path.dirname(os.path.abspath(__file__)), "contrib.json")
+        # 1) real data scraped from github.com by fetch_contributions.py
+        scraped = os.path.join(HERE, "..", "data", "contributions.json")
+        if os.path.exists(scraped):
+            try:
+                d = _from_scraped(scraped)
+                if d["total"]["lastYear"] > 0:
+                    print("API failed (%s); using scraped data/contributions.json" % e)
+                    return d
+            except Exception as e2:
+                print("scraped fallback failed (%s)" % e2)
+        # 2) last-resort static snapshot committed next to this script
+        here = os.path.join(HERE, "contrib.json")
         if os.path.exists(here):
             print("API failed (%s); using local contrib.json" % e)
             return json.load(open(here))
