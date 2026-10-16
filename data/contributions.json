@@ -1,22 +1,22 @@
 {
   "username": "PedroAugSouza",
-  "generated_at": "2026-10-15T11:26:34Z",
+  "generated_at": "2026-10-16T11:21:27Z",
   "range": {
     "start": "2025-10-12",
+    "end": "2026-10-16"
+  },
+  "total_contributions": 2163,
+  "active_days": 220,
+  "avg_per_active_day": 9.8,
+  "current_streak": {
+    "length": 60,
+    "start": "2026-08-17",
     "end": "2026-10-15"
   },
-  "total_contributions": 2161,
-  "active_days": 219,
-  "avg_per_active_day": 9.9,
-  "current_streak": {
-    "length": 59,
-    "start": "2026-08-17",
-    "end": "2026-10-14"
-  },
   "longest_streak": {
-    "length": 59,
+    "length": 60,
     "start": "2026-08-17",
-    "end": "2026-10-14"
+    "end": "2026-10-15"
   },
   "best_day": {
     "date": "2026-10-13",
@@ -73,7 +73,7 @@
     },
     {
       "month": "2026-10",
-      "total": 293
+      "total": 295
     }
   ],
   "days": [
@@ -1551,6 +1551,10 @@
     },
     {
       "date": "2026-10-15",
+      "count": 2
+    },
+    {
+      "date": "2026-10-16",
       "count": 0
     }
   ]
